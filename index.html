@@ -2,25 +2,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ludo Game</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+	<title>Video Button</title>
+	<style>
+		.video-button {
+			position: relative;
+			display: inline-block;
+			padding: 10px 20px;
+			background-color: #4CAF50;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		
+		.video-button:hover {
+			background-color: #3e8e41;
+		}
+		
+		.video-button video {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			border-radius: 5px;
+		}
+	</style>
 </head>
 <body>
-  <div class="game-board">
-    <div class="token token-1"></div>
-    <div class="token token-2"></div>
-    <div class="token token-3"></div>
-    <div class="token token-4"></div>
-    <div class="square" id="square-1"></div>
-    <div class="square" id="square-2"></div>
-    <!-- ... -->
-    <button id="roll-dice">Roll Dice</button>
-    <div id="dice-display"></div>
-  </div>
-
-  <script src="script.js"></script>
+	<button class="video-button">
+		<video muted loop>
+			<source src="video.mp4" type="video/mp4">
+		</video>
+		Watch Video
+	</button>
 </body>
 </html>
-
-
-
