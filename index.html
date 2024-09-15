@@ -2,40 +2,90 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Video Button</title>
+	<title>Video Player</title>
 	<style>
-		.video-button {
-			position: relative;
-			display: inline-block;
-			padding: 10px 20px;
-			background-color: #4CAF50;
-			color: #fff;
-			border: none;
-			border-radius: 5px;
-			cursor: pointer;
+		.video-player {
+			width: 640px;
+			height: 480px;
+			border: 1px solid #ccc;
+			padding: 10px;
 		}
 		
-		.video-button:hover {
-			background-color: #3e8e41;
-		}
-		
-		.video-button video {
-			position: absolute;
-			top: 0;
-			left: 0;
+		.video-player video {
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
-			border-radius: 5px;
+		}
+		
+		.controls {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 10px;
+		}
+		
+		.button {
+			background-color: #4CAF50;
+			color: #fff;
+			border: none;
+			padding: 10px 20px;
+			cursor: pointer;
+		}
+		
+		.button:hover {
+			background-color: #3e8e41;
 		}
 	</style>
 </head>
 <body>
-	<button class="video-button">
-		<video muted loop>
+	<div class="video-player">
+		<video id="video" controls>
 			<source src="video.mp4" type="video/mp4">
 		</video>
-		Watch Video
-	</button>
+		<div class="controls">
+			<button class="button" id="play-pause">Play/Pause</button>
+			<button class="button" id="mute-unmute">Mute/Unmute</button>
+			<input type="range" id="volume" min="0" max="1" step="0.1" value="1">
+			<span id="time">00:00</span>
+		</div>
+	</div>
+	
+	<script>
+		const video = document.getElementById('video');
+		const playPause = document.getElementById('play-pause');
+		const muteUnmute = document.getElementById('mute-unmute');
+		const volume = document.getElementById('volume');
+		const time = document.getElementById('time');
+		
+		playPause.addEventListener('click', () => {
+			if (video.paused) {
+				video.play();
+			} else {
+				video.pause();
+			}
+		});
+		
+		muteUnmute.addEventListener('click', () => {
+			if (video.muted) {
+				video.muted = false;
+			} else {
+				video.muted = true;
+			}
+		});
+		
+		volume.addEventListener('input', () => {
+			video.volume = volume.value;
+		});
+		
+		video.addEventListener('timeupdate', () => {
+			time.textContent = formatTime(video.currentTime);
+		});
+		
+		function formatTime(time) {
+			const minutes = Math.floor(time / 60);
+			const seconds = Math.floor(time % 60);
+			return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+		}
+	</script>
 </body>
 </html>
