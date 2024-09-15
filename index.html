@@ -2,29 +2,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Image Editor</title>
-  <link rel="stylesheet" href="style.css">
+  <title>PDF Opener</title>
 </head>
 <body>
-  <div class="editor">
-    <canvas id="canvas" width="500" height="500"></canvas>
-    <div class="tools">
-      <button id="save">Save Image</button>
-      <input type="range" id="brightness" min="-100" max="100" value="0">
-      <input type="range" id="contrast" min="-100" max="100" value="0">
-      <input type="range" id="saturation" min="-100" max="100" value="0">
-      <button id="crop">Crop</button>
-      <button id="resize">Resize</button>
-      <select id="filters">
-        <option value="none">None</option>
-        <option value="grayscale">Grayscale</option>
-        <option value="sepia">Sepia</option>
-      </select>
-      <button id="undo">Undo</button>
-      <button id="redo">Redo</button>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+  <embed src="example.pdf" width="800" height="600" type="application/pdf">
 </body>
 </html>
