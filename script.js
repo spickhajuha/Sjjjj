@@ -1,25 +1,29 @@
-document.getElementById("send-button").addEventListener("click", function() {
-    const messageInput = document.getElementById("message-input");
-    const messageText = messageInput.value;
+document.getElementById("send-otp").addEventListener("click", function () {
+    const phone = document.getElementById("phone").value;
     
-    if (messageText.trim()) {
-        addMessage(messageText, "user");
-        messageInput.value = '';
+    if (phone) {
+        // Simulate sending OTP (replace with actual API call)
+        console.log(`Sending OTP to ${phone}`);
         
-        // Simulate bot response
-        setTimeout(() => {
-            addMessage("Bot: " + messageText, "bot");
-        }, 1000);
+        // Display OTP input and verify button
+        document.getElementById("otp-container").style.display = "block";
+        document.getElementById("verify-otp").style.display = "block";
+        document.getElementById("message").innerText = "OTP sent! Please check your phone.";
+    } else {
+        document.getElementById("message").innerText = "Please enter a valid phone number.";
     }
 });
 
-function addMessage(text, sender) {
-    const chatBox = document.getElementById("chat-box");
-    const messageDiv = document.createElement("div");
-    messageDiv.classList.add("message", sender);
-    messageDiv.textContent = text;
-    chatBox.appendChild(messageDiv);
-    
-    // Scroll to the bottom of the chat box
-    chatBox.scrollTop = chatBox.scrollHeight;
-}
+document.getElementById("signup-form").addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent form submission
+
+    const otp = document.getElementById("otp").value;
+
+    // Simulate OTP verification (replace with actual API call)
+    if (otp) {
+        console.log(`Verifying OTP: ${otp}`);
+        document.getElementById("message").innerText = "OTP verified! Sign up successful.";
+    } else {
+        document.getElementById("message").innerText = "Please enter the OTP.";
+    }
+});
